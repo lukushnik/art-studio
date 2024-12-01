@@ -27,10 +27,10 @@ export function Header() {
             const userData = await response.json();
             setUser(userData);
           } else {
-            console.error('Failed to fetch user profile');
+            console.error('Не вдалося отримати профіль користувача');
           }
         } catch (error) {
-          console.error('Error fetching user profile:', error);
+          console.error('Помилка при отриманні профілю користувача:', error);
         }
       }
     };

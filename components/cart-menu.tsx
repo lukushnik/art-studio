@@ -83,16 +83,16 @@ export default function CartMenu() {
               {totalItems}
             </span>
           )}
-          <span className="sr-only">Open cart</span>
+          <span className="sr-only">Відкрити кошик</span>
         </Button>
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>
-          <SheetTitle>Your Cart</SheetTitle>
+          <SheetTitle>Ваш кошик</SheetTitle>
         </SheetHeader>
         <div className="mt-8">
           {cart?.cartProduct.length === 0 ? (
-            <p className="text-center text-muted-foreground">Your cart is empty</p>
+            <p className="text-center text-muted-foreground">Ваш кошик порожній</p>
           ) : (
             <>
               <ul className="space-y-4">
@@ -116,7 +116,7 @@ export default function CartMenu() {
                           variant="outline"
                           size="icon"
                           onClick={() => updateQuantity(item.productId, -1)}
-                          aria-label={`Decrease quantity of ${item.product.name}`}
+                          aria-label={`Зменшити кількість ${item.product.name}`}
                         >
                           <Minus className="h-4 w-4" />
                         </Button>
@@ -125,7 +125,7 @@ export default function CartMenu() {
                           variant="outline"
                           size="icon"
                           onClick={() => updateQuantity(item.productId, 1)}
-                          aria-label={`Increase quantity of ${item.product.name}`}
+                          aria-label={`Збільшити кількість ${item.product.name}`}
                         >
                           <Plus className="h-4 w-4" />
                         </Button>
@@ -140,7 +140,7 @@ export default function CartMenu() {
                   className="w-full"
                   onClick={() => router.push('/checkout')}
                 >
-                  Checkout
+                  Оформити замовлення
                 </Button>
               </div>
             </>
