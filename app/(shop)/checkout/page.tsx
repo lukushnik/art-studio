@@ -37,7 +37,7 @@ export default function Checkout() {
 
   const handlePlaceOrder = async () => {
     if (!isFormValid) {
-      toast.error('Please fill out all required fields.');
+      toast.error('Будь ласка, заповніть всі поля.');
       return;
     }
 
@@ -52,15 +52,15 @@ export default function Checkout() {
       });
 
       if (response.ok) {
-        toast.success('Order Created');
+        toast.success('Замовлення створено');
         clearCart();
         router.push('/');
       } else {
-        toast.error('Failed to place order.');
+        toast.error('Не вдалося зробити замовлення.');
       }
     } catch (error) {
-      console.error('Error placing order:', error);
-      toast.error('An error occurred while placing the order.');
+      console.error('Помилка при створенні замовлення:', error);
+      toast.error('Сталася помилка при створенні замовлення.');
     }
   };
 
@@ -73,36 +73,36 @@ export default function Checkout() {
 
   return (
     <div className="container mx-auto py-8">
-      <h1 className="text-3xl font-bold mb-8">Checkout</h1>
+      <h1 className="text-3xl font-bold mb-8">Оформлення замовлення</h1>
       <div className="grid md:grid-cols-2 gap-8">
         <div>
-          <h2 className="text-xl font-semibold mb-4">Shipping Address</h2>
+          <h2 className="text-xl font-semibold mb-4">Адреса доставки</h2>
           <form className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <Label htmlFor="firstName">First Name</Label>
+                <Label htmlFor="firstName">Ім'я</Label>
                 <Input
                   id="firstName"
-                  placeholder="John"
+                  placeholder="Іван"
                   value={formValues.firstName}
                   onChange={(e) => handleInputChange(e, 'firstName')}
                 />
               </div>
               <div>
-                <Label htmlFor="lastName">Last Name</Label>
+                <Label htmlFor="lastName">Прізвище</Label>
                 <Input
                   id="lastName"
-                  placeholder="Doe"
+                  placeholder="Іванов"
                   value={formValues.lastName}
                   onChange={(e) => handleInputChange(e, 'lastName')}
                 />
               </div>
             </div>
             <div>
-              <Label htmlFor="address">Address</Label>
+              <Label htmlFor="address">Адреса</Label>
               <Input
                 id="address"
-                placeholder="123 Main St"
+                placeholder="вул. Центральна, 123"
                 value={formValues.address}
                 onChange={(e) => handleInputChange(e, 'address')}
               />
@@ -112,30 +112,30 @@ export default function Checkout() {
                 <Label htmlFor="city">City</Label>
                 <Input
                   id="city"
-                  placeholder="New York"
+                  placeholder="Київ"
                   value={formValues.city}
                   onChange={(e) => handleInputChange(e, 'city')}
                 />
               </div>
               <div>
-                <Label htmlFor="state">State</Label>
+                <Label htmlFor="state">Область</Label>
                 <Select
                   onValueChange={(value) => setFormValues({ ...formValues, state: value })}
                 >
                   <SelectTrigger id="state">
-                    <SelectValue placeholder="Select state" />
+                    <SelectValue placeholder="Оберіть область" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="ny">New York</SelectItem>
-                    <SelectItem value="ca">California</SelectItem>
-                    <SelectItem value="tx">Texas</SelectItem>
+                    <SelectItem value="ny">Київська</SelectItem>
+                    <SelectItem value="ca">Одеська</SelectItem>
+                    <SelectItem value="tx">Львівська</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <Label htmlFor="zipCode">Zip Code</Label>
+                <Label htmlFor="zipCode">Поштовий індекс</Label>
                 <Input
                   id="zipCode"
                   placeholder="12345"
@@ -144,17 +144,17 @@ export default function Checkout() {
                 />
               </div>
               <div>
-                <Label htmlFor="country">Country</Label>
+                <Label htmlFor="country">Країна</Label>
                 <Select
                   onValueChange={(value) => setFormValues({ ...formValues, country: value })}
                 >
                   <SelectTrigger id="country">
-                    <SelectValue placeholder="Select country" />
+                    <SelectValue placeholder="Оберіть країну" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="us">United States</SelectItem>
-                    <SelectItem value="ca">Canada</SelectItem>
-                    <SelectItem value="uk">United Kingdom</SelectItem>
+                    <SelectItem value="us">Україна</SelectItem>
+                    <SelectItem value="ca">Польща</SelectItem>
+                    <SelectItem value="uk">Німеччина</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -162,9 +162,9 @@ export default function Checkout() {
           </form>
         </div>
         <div className="space-y-4">
-          <h2 className="text-xl font-semibold">Cart Summary</h2>
+          <h2 className="text-xl font-semibold">Сума кошику</h2>
           {cartProducts.length === 0 ? (
-            <p>Your cart is empty</p>
+            <p>Ваш кошик порожній</p>
           ) : (
             <>
               <div className="space-y-2">
@@ -179,20 +179,20 @@ export default function Checkout() {
               </div>
               <div className="border-t pt-4">
                 <div className="flex justify-between">
-                  <span>Subtotal</span>
+                  <span>Підсумок</span>
                   <span>${subtotal.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>Tax</span>
+                  <span>Податок</span>
                   <span>${tax.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between font-semibold">
-                  <span>Total</span>
+                  <span>Загальна сума</span>
                   <span>${total.toFixed(2)}</span>
                 </div>
               </div>
               <Button className="w-full" onClick={handlePlaceOrder} disabled={!isFormValid}>
-                Place Order
+                Оформити замовлення
               </Button>
             </>
           )}
