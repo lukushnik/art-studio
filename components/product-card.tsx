@@ -15,7 +15,7 @@ const apiCall = async (url: string, options: RequestInit) => {
   const response = await fetch(url, options);
   if (!response.ok) {
     const errorMessage = await response.text();
-    throw new Error(errorMessage || 'API call failed');
+    throw new Error(errorMessage || 'Не вдалося виконати запит до API');
   }
   return response.json();
 };
@@ -28,7 +28,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
   const handleAddToCart = async () => {
     if (!token) {
-      toast.error('You must be logged in to add products to the cart.');
+      toast.error('Ви повинні увійти, щоб додати продукт до кошика.');
       return;
     }
 
@@ -62,10 +62,10 @@ export default function ProductCard({ product }: ProductCardProps) {
 
       updateCart(transformedCart);
 
-      toast.success('Product added successfully.');
+      toast.success('Продукт успішно додано.');
     } catch (error) {
-      console.error('Error adding to cart:', error);
-      toast.error('Failed to add product to cart.');
+      console.error('Помилка при додаванні до кошика:', error);
+      toast.error('Не вдалося додати продукт до кошика.');
     }
   };
 
@@ -96,7 +96,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           className="bg-white text-black px-4 py-2 rounded-md hover:bg-gray-200 transition-colors duration-300"
           aria-label={`Add ${product.name} to cart`}
         >
-          Add to Cart
+          Додати до кошика
         </button>
       </div>
     </div>
