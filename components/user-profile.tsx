@@ -56,7 +56,7 @@ export default function UserProfile() {
     <div className="w-full max-w-4xl mx-auto space-y-8">
       <Card>
         <CardHeader>
-          <CardTitle>User Profile</CardTitle>
+          <CardTitle>Профіль користувача</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
@@ -67,11 +67,11 @@ export default function UserProfile() {
             <div>
               <h2 className="text-2xl font-bold">{user.name}</h2>
               <p className="text-sm text-muted-foreground">ID: {user.id}</p>
-              <p className="text-sm text-muted-foreground">Phone: {user.phone}</p>
+              <p className="text-sm text-muted-foreground">Телефон: {user.phone}</p>
             </div>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="photo-upload">Upload Photo</Label>
+            <Label htmlFor="photo-upload">Завантажити фото</Label>
             <Input
               id="photo-upload"
               type="file"
@@ -84,19 +84,19 @@ export default function UserProfile() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Order History</CardTitle>
+          <CardTitle>Історія замовлень</CardTitle>
         </CardHeader>
         <CardContent>
           {orders.length === 0 ? (
-            <p className="text-muted-foreground">No orders found.</p>
+            <p className="text-muted-foreground">Замовлення не знайдено.</p>
           ) : (
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Order ID</TableHead>
-                  <TableHead>Date</TableHead>
-                  <TableHead>Total</TableHead>
-                  <TableHead>Status</TableHead>
+                  <TableHead>ID замовлення</TableHead>
+                  <TableHead>Дата</TableHead>
+                  <TableHead>Сума</TableHead>
+                  <TableHead>Статус</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -111,7 +111,7 @@ export default function UserProfile() {
       order.isOrdered ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'
     }`}
   >
-    {order.isOrdered ? 'Completed' : 'Active'}
+    {order.isOrdered ? 'Завершено' : 'Активне'}
   </span>
                     </TableCell>
 
