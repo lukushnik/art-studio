@@ -33,12 +33,12 @@ export function UserMenu() {
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => router.push('/create')} className="flex items-center">
           <Plus className="mr-2 h-4 w-4"/>
-          <span>Add new product</span>
+          <span>Додати новий товар</span>
         </DropdownMenuItem>
         <DropdownMenuSeparator/>
         <DropdownMenuItem className="flex items-center cursor-pointer" onSelect={() => resetAuth()}>
           <LogOut className="mr-2 h-4 w-4"/>
-          <span>Log out</span>
+          <span>Вийти</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
