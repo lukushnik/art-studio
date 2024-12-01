@@ -20,16 +20,16 @@ import {toast} from 'sonner';
 
 const formSchema = z.object({
   name: z.string().min(2, {
-    message: "Product name must be at least 2 characters.",
+    message: "Назва продукту повинна містити мінімум 2 символи.",
   }),
   price: z.string().refine((val) => !isNaN(Number(val)) && Number(val) > 0, {
-    message: "Price must be a positive number.",
+    message: "Ціна повинна бути додатнім числом.",
   }),
   description: z.string().min(10, {
-    message: "Description must be at least 10 characters.",
+    message: "Опис повинен містити мінімум 10 символів.",
   }),
   image: z.string().url({
-    message: "Please enter a valid URL for the product image.",
+    message: "Будь ласка, введіть правильне URL для зображення продукту.",
   }),
 })
 
@@ -63,14 +63,14 @@ export default function AddProductForm() {
       })
 
       if (response.ok) {
-        toast('Product added successfully!')
+        toast('Продукт успішно додано!')
         form.reset()
       } else {
         const error = await response.json()
-        toast.error(`Failed to add product: ${error.message}`)
+        toast.error(`Не вдалося додати продукт: ${error.message}`)
       }
     } catch {
-      toast.error(`An error occurred`)
+      toast.error(`Сталася помилка`)
     } finally {
       setIsSubmitting(false)
     }
@@ -85,12 +85,12 @@ export default function AddProductForm() {
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Product Name</FormLabel>
+              <FormLabel>Назва продукту</FormLabel>
               <FormControl>
-                <Input placeholder="Enter product name" {...field} />
+                <Input placeholder="Введіть назву продукту" {...field} />
               </FormControl>
               <FormDescription>
-                This is the name that will be displayed for your product.
+                  Це назва, яка буде відображена для вашого продукту.
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -101,12 +101,12 @@ export default function AddProductForm() {
           name="price"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Price</FormLabel>
+              <FormLabel>Ціна</FormLabel>
               <FormControl>
                 <Input type="number" step="0.01" placeholder="Enter price" {...field} />
               </FormControl>
               <FormDescription>
-                Enter the price in dollars. Use decimal point for cents.
+                  Введіть ціну в доларах. Використовуйте десятковий знак для копійок.
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -117,12 +117,12 @@ export default function AddProductForm() {
           name="description"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Description</FormLabel>
+              <FormLabel>Опис</FormLabel>
               <FormControl>
                 <Textarea placeholder="Enter product description" {...field} />
               </FormControl>
               <FormDescription>
-                Provide a detailed description of your product.
+                  Напишіть детальний опис вашого продукту.
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -133,19 +133,19 @@ export default function AddProductForm() {
           name="image"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Product Image URL</FormLabel>
+              <FormLabel>URL зображення продукту</FormLabel>
               <FormControl>
                 <Input type="url" placeholder="https://example.com/product-image.jpg" {...field} />
               </FormControl>
               <FormDescription>
-                Enter the URL of the product image.
+                  Введіть URL зображення продукту.
               </FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
         <Button type="submit" disabled={isSubmitting}>
-          {isSubmitting ? "Adding Product..." : "Add Product"}
+          {isSubmitting ? "Додається продукт..." : "Додати продукт"}
         </Button>
       </form>
     </Form>
