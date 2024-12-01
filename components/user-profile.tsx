@@ -47,7 +47,7 @@ export default function UserProfile() {
   if (!user) {
     return (
       <div className="text-center">
-        <p className="text-lg">Please log in to view your profile.</p>
+        <p className="text-lg">Увійдіть, щоб побачити профіль.</p>
       </div>
     );
   }
