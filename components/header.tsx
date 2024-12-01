@@ -59,7 +59,7 @@ export function Header() {
                 href="/shop"
                 className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
               >
-                Shop
+                Наш магазин
               </Link>
             </nav>
           </div>
@@ -69,7 +69,7 @@ export function Header() {
                 <UserMenu/>
               ) : (
                 <Link href="/login" className="text-gray-700 hover:text-gray-900">
-                  Sign In
+                   Увійти
                 </Link>
               )
             ) : (
