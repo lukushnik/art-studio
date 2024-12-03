@@ -17,7 +17,7 @@ export default function AboutPage() {
         />
         <div className="absolute inset-0 flex items-center justify-center">
           <h1 className="text-4xl md:text-6xl font-bold text-white text-center">
-            Crafting Digital Experiences
+            Створення цифрових вражень
           </h1>
         </div>
       </section>

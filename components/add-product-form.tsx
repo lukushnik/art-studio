@@ -103,7 +103,7 @@ export default function AddProductForm() {
             <FormItem>
               <FormLabel>Ціна</FormLabel>
               <FormControl>
-                <Input type="number" step="0.01" placeholder="Enter price" {...field} />
+                <Input type="number" step="0.1" placeholder="Ціна" {...field} />
               </FormControl>
               <FormDescription>
                   Введіть ціну в доларах. Використовуйте десятковий знак для копійок.
@@ -119,7 +119,7 @@ export default function AddProductForm() {
             <FormItem>
               <FormLabel>Опис</FormLabel>
               <FormControl>
-                <Textarea placeholder="Enter product description" {...field} />
+                <Textarea placeholder="Введіть опис для нового продукту" {...field} />
               </FormControl>
               <FormDescription>
                   Напишіть детальний опис вашого продукту.
