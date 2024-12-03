@@ -27,54 +27,54 @@ const RegisterPreview = () => {
     try {
       await onSubmit(formData);
     } catch (err) {
-      console.error("Registration failed:", err);
+      console.error("Реєстрація не вдалася:", err);
     }
   };
 
   return (
-    <div className="space-y-6">
-      <div className="space-y-2 text-center">
-        <h1 className="text-3xl font-bold">Create an account</h1>
-        <p className="text-gray-500 dark:text-gray-400">Enter your information to get started</p>
-      </div>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="space-y-2">
-          <Label htmlFor="name">Name</Label>
-          <Input
-            id="name"
-            name="name"
-            placeholder="Katy Lukash"
-            required
-            value={formData.name}
-            onChange={handleChange}
-          />
+      <div className="space-y-6">
+        <div className="space-y-2 text-center">
+          <h1 className="text-3xl font-bold">Створіть обліковий запис</h1>
+          <p className="text-gray-500 dark:text-gray-400">Введіть свої дані, щоб розпочати</p>
         </div>
-        <div className="space-y-2">
-          <Label htmlFor="phone">Phone</Label>
-          <Input
-            id="phone"
-            name="phone"
-            placeholder="+380.."
-            required
-            type="tel"
-            value={formData.phone}
-            onChange={handleChange}
-          />
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="name">Ім&#39;я</Label>
+            <Input
+                id="name"
+                name="name"
+                placeholder="Катя Лукаш"
+                required
+                value={formData.name}
+                onChange={handleChange}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="phone">Телефон</Label>
+            <Input
+                id="phone"
+                name="phone"
+                placeholder="+380.."
+                required
+                type="tel"
+                value={formData.phone}
+                onChange={handleChange}
+            />
+          </div>
+          <Button className="w-full" type="submit" disabled={loading}>
+            {loading && (
+                <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+            )}
+            Зареєструватися
+          </Button>
+        </form>
+        <div className="text-center text-sm mt-2">
+          Вже маєте обліковий запис?{' '}
+          <Link href={'/login'} className="underline">
+            Увійти
+          </Link>
         </div>
-        <Button className="w-full" type="submit" disabled={loading}>
-          {loading && (
-            <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-          )}
-          Sign Up
-        </Button>
-      </form>
-      <div className="text-center text-sm mt-2">
-        Already have an account?{' '}
-        <Link href={'/login'} className="underline">
-          Sign in
-        </Link>
       </div>
-    </div>
   );
 };
 

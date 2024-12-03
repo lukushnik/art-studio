@@ -80,7 +80,7 @@ export default function Checkout() {
           <form className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <Label htmlFor="firstName">Ім'я</Label>
+                <Label htmlFor="firstName">Ім&#39;я</Label>
                 <Input
                   id="firstName"
                   placeholder="Іван"
